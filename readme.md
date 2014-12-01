@@ -1,5 +1,5 @@
 # Spiral Knights guild log manager
-The log manager is a script which provides tools for managing Spiral Knights guild logs in various ways. The script is also usable as a module in other scripts.
+The log manager is a script which provides tools for managing Spiral Knights guild logs in various ways. The script is also usable as a module in other scripts (hopefully).
 
 ## Planned features
 * Log to Excel

@@ -1,0 +1,4 @@
+input_timezone=+0100
+output_timezone=-0800
+excel_timestamp=%m/%d/%y %H:%M:%S
+download_url=http://pastebin.com/raw.php?i=Kv0ZXzfB
