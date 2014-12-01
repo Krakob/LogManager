@@ -38,13 +38,12 @@ import os
 import sys
 import csv
 import datetime
-import urllib.request
 
 
 ################################
 ## Variables
 ################################
-header = ['Timestamp', 'Category', 'Name', 'Message'] #Correctly ordered header for exported logs.
+header = ('Timestamp', 'Category', 'Name', 'Message') #Correctly ordered header for exported logs.
 datetime_format = "%m/%d/%y %I:%M:%S %p" #Format of datetime entry. MM/DD/YY HH:MM:SS AM/PM.
 
 
@@ -75,14 +74,6 @@ def read_settings(filename):
 			for row in settings_data:
 				settings[row[0]] = row[1] #Column 0 = key, column 1 = value
 			print("The settings were successfully read!")
-			if not settings['download_url'] == '': #If download settings isn't blank, i.e. an adress is provided
-				if input_bool("Your settings file wants to download settings from %s. Would you like to accept this? Be careful with downloading settings from sources you don't trust, this script is not designed to be virus/abuse proof." % settings['download_url']): #Request user's consent for downloading settings.
-					response = urllib.request.urlopen(settings['download_url']).read()
-					settings = csv.reader(response, delimiter="=")
-					#TODO:
-						#test with actual intwerwebs files, also make this stuff work
-						#refactor to remove copypasta (make new functions?)
-						#add a form of security
 			return settings
 	except FileNotFoundError:
 		print("%s could not be found." % filename)
