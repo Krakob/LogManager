@@ -147,8 +147,12 @@ class Timeperiod:
 	'''
 
 	def __init__(self, start, end):
-		self.start = start
-		self.end = end
+		if start < end:	 # Make sure that the provided start is before the provided end.
+			self.start = start
+			self.end = end
+		else:
+			self.start = end
+			self.end = start
 
 	@classmethod
 	def from_delta(cls, start, enddelta):
