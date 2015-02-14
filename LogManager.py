@@ -104,7 +104,7 @@ class Log(LogBase):
 
 		try:
 			print("Trying to derive start and end time based on the filename, %s" % filename)
-			self.end = datetime.datetime.strptime(' '.join(filename.split('_')[1:]) + settings['input_timezone'], LOGNAME_DATETIME_FORMAT)
+			self.end = datetime.datetime.strptime(' '.join(filename.split('_')[-2:]) + settings['input_timezone'], LOGNAME_DATETIME_FORMAT)
 			self.start = self.end - datetime.timedelta(weeks=1)
 			print("Success!")
 		except:
@@ -143,23 +143,23 @@ class Entry:
 
 class Timeperiod:
 	'''A period of time with a starting and an ending point.
-	Provides a method for hcecking whether a point of time is within it.
+	Provides a method for checking whether a point of time is within it.
 	'''
 
-	def __init__(self, startpoint, endpoint=None, endtime=None):
-		self.start = startpoint
-		if endpoint:
-			self.end = endpoint
-		elif endtime:
-			self.end = startpoint + endtime
-		else:
-			raise TypeError("Timeperiod constructor requires an endpoint or an endtime argument, neither was given.")
+	def __init__(self, start, end):
+		self.start = start
+		self.end = end
 
+	@classmethod
+	def from_delta(cls, start, enddelta):
+		return cls(start, start+enddelta)
 
-	def within(self, time):
+	def contains(self, time):
 		'''Checks whether time is within the period of time of the object.
 		'''
-		return self.start < time < self.end
+		return self.start <= time <= self.end
+
+
 
 ################################
 ## Functions
