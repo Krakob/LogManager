@@ -17,6 +17,13 @@ Variables:
 	- ENTRY_DATETIME_FORMAT (string) - the format of the datetime representation in log entries.
 	- LOGNAME_DATETIME_FORMAT (string) - the format of the datetime representation in log filenames.
 
+Classes:
+	- LogBase - base class containing methods used by both Guild and Log
+	- Guild - a container for logs, to be used for managing and compiling logs
+	- Log - a single representation of a log file
+	- Entry - an entry in a log
+	- Timeperiod - a period of time
+
 Functions:
 	- read_settings(filename)
 	- read_log(filename)
