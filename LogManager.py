@@ -55,23 +55,20 @@ class LogBase:
 	'''Base class containing methods needed by both Guild and Log.
 	The class is not meant to be instantiated.
 	'''
-	
-	def format_excel(self, output_filename=None):
-		'''Converts all entries to Excel-suitable format (tab separated CSV without quotation marks)
-		and dumps it in output_filename if provided. Otherwise just returns a list of dicts of the
-		entries in the object.
+	def get_list(self):
+		'''Gets a list of dicts of the entries in the object.
 		'''
 
-		excel_rows = []
-		for entry in self.entries:
-			excel_rows.append(entry.get_dict())
-			# print("ENTRY: %s\n" % entry)
-		if output_filename:  # If there is an output filename
-			with open(output_filename, 'w', newline='') as f:
-				writer = csv.DictWriter(f, HEADER, delimiter='\t', doublequote=False)
-				writer.writeheader()
-				writer.writerows(excel_rows)
-		return excel_rows
+		return [entry.get_dict() for entry in self.entries]
+
+	def dump_excel(self, filename):
+		'''Dumps Excel appropriate data in filename.
+		'''
+
+		with open(filename, 'w', newline='') as f:
+			writer = csv.DictWriter(f, HEADER, delimiter='\t', doublequote=False, escapechar='')
+			writer.writeheader()
+			writer.writerows(self.get_list())
 
 
 class Guild(LogBase):
@@ -209,3 +206,5 @@ def read_settings(filename):
 if __name__ == '__main__':
 	settings = read_settings("settings.csv")
 	print(settings)
+
+	print(Log('testlog.csv').get_list())
