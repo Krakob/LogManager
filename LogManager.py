@@ -157,6 +157,9 @@ class Timeframe:
 			self.start = end
 			self.end = start
 
+	def __str__(self):
+		return str(self.start) + " to " + str(self.end)
+
 	@classmethod
 	def from_delta(cls, start, enddelta):
 		return cls(start, start+enddelta)
@@ -213,4 +216,5 @@ if __name__ == '__main__':
 	settings = read_settings("settings.csv")
 	print(settings)
 
-	print(Log('testlog.csv').get_list())
+	tf = Timeframe.from_delta(datetime.datetime.now(), datetime.timedelta(days=3))
+	print(tf)
