@@ -22,7 +22,7 @@ Classes:
 	- Guild - a container for logs, to be used for managing and compiling logs
 	- Log - a single representation of a log file
 	- Entry - an entry in a log
-	- Timeperiod - a period of time
+	- Timeframe - a period of time
 
 Functions:
 	- read_settings(filename)
@@ -145,7 +145,7 @@ class Entry:
 		}
 
 
-class Timeperiod:
+class Timeframe:
 	'''A period of time with a starting and an ending point.
 	Provides a method for checking whether a point of time is within it.
 	'''
