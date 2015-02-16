@@ -108,14 +108,13 @@ class Log(LogBase):
 
 		try:
 			print("Trying to derive start and end time based on the filename, %s" % filename)
-			self.end = datetime.datetime.strptime(' '.join(filename.split('_')[-2:]) + settings['input_timezone'], LOGNAME_DATETIME_FORMAT)
-			self.start = self.end - datetime.timedelta(days=10)
+			t = datetime.datetime.strptime(' '.join(filename.split('_')[-2:]) + settings['input_timezone'], LOGNAME_DATETIME_FORMAT)  # Derive timestamp from filename
+			self.timeframe = Timeframe.from_delta(t, datetime.timedelta(days=-10))
 			print("Success!")
 		except:
 			print("Fail! The filename might not be correct (only filenames formatted like the files originally exported from SK work)")
 			print("The first and last dates found in the file will be used instead.")
-			self.start = self.entries[-1].time
-			self.end = self.entries[0].time
+			self.timeframe = Timeframe(self.entries[-1].time, self.entries[0].time)
 
 
 class Entry:
