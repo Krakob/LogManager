@@ -92,23 +92,33 @@ class Log(LogBase):
 	'''A single log file, to be contained in a Guild object.
 	'''
 	
-	def __init__(self, filename):
-		self.entries = []
-		self.source = filename
+	def __init__(self, entries):
+		'''Constructor. Takes a list of Entry objects.
+		'''
 
-		print("Attempting to read the log %s." % filename)
-		try:
-			with open(filename) as f:
-				log_data = list(csv.DictReader(f))  # Make a list of dicts of all entries in the log.
-				for entry in log_data:
-					self.entries.append(Entry(entry))  # Make Entry objects for all entries.
-				print("Success!")
-		except FileNotFoundError:
-			print("%s could not be found." % filename)
+		self.entries = entries
+		self.source = None
 
+	@classmethod
+	def from_dictlist(cls, entries):
+		'''Alternative constructor. Converts a list of dicts to Entry objects
+		and puts them in the regular constructor.
+		'''
+
+		pass
+
+	@classmethod
+	def from_file(cls, filename):
+		'''Alternative constructor. Derives a list of dicts from a file
+		and puts them in the from_dictlist constructor.
+		'''
+
+		pass
+
+	def derive_timeframe(self):
 		try:
-			print("Trying to derive start and end time based on the filename, %s" % filename)
-			t = datetime.datetime.strptime(' '.join(filename.split('_')[-2:]) + settings['input_timezone'], LOGNAME_DATETIME_FORMAT)  # Derive timestamp from filename
+			print("Trying to derive start and end time based on the filename, %s" % self.source)
+			t = datetime.datetime.strptime(' '.join(self.source.split('_')[-2:]) + settings['input_timezone'], LOGNAME_DATETIME_FORMAT)  # Derive timestamp from filename
 			self.timeframe = Timeframe.from_delta(t, datetime.timedelta(days=-10))
 			print("Success!")
 		except:
