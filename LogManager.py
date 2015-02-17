@@ -100,12 +100,15 @@ class Log(LogBase):
 		self.source = None
 
 	@classmethod
-	def from_dictlist(cls, entries):
+	def from_dictlist(cls, diclist):
 		'''Alternative constructor. Converts a list of dicts to Entry objects
 		and puts them in the regular constructor.
 		'''
 
-		pass
+		entries = []
+		for entry in diclist:
+			entries.append(Entry(entry))
+		return cls(entries)
 
 	@classmethod
 	def from_file(cls, filename):
@@ -113,7 +116,11 @@ class Log(LogBase):
 		and puts them in the from_dictlist constructor.
 		'''
 
-		pass
+		with open(filename) as f:
+			log = cls.from_dictlist(list(csv.DictReader(f)))
+			log.source = filename
+			log.derive_timeframe()
+			return log
 
 	def derive_timeframe(self):
 		try:
@@ -226,5 +233,5 @@ if __name__ == '__main__':
 	settings = read_settings("settings.csv")
 	print(settings)
 
-	tf = Timeframe.from_delta(datetime.datetime.now(), datetime.timedelta(days=3))
-	print(tf)
+	l = Log.from_file('testlog.csv')
+	print(l.get_list())
