@@ -125,7 +125,8 @@ class Log(LogBase):
 	def derive_timeframe(self):
 		try:
 			print("Trying to derive start and end time based on the filename, %s" % self.source)
-			t = datetime.datetime.strptime(' '.join(self.source.split('_')[-2:]) + settings['input_timezone'], LOGNAME_DATETIME_FORMAT)  # Derive timestamp from filename
+			t = datetime.datetime.strptime(' '.join(self.source.split('_')[-2:]) + settings['input_timezone'], LOGNAME_DATETIME_FORMAT)
+							# Derive timestamp from filename
 			self.timeframe = Timeframe.from_delta(t, datetime.timedelta(days=-10))
 			print("Success!")
 		except:
@@ -138,16 +139,19 @@ class Entry:
 	'''An entry (line) in a log, to be contained in a Log object.
 	'''
 	
-	def __init__(self, entry):
-		self.timestamp = entry['Timestamp']
-		self.category = entry['Category']
-		self.name = entry['Name']
-		self.message = entry['Message']
+	def __init__(self, timestamp, category, name, message):
+		self.timestamp = timestamp
+		self.category = category
+		self.name = name
+		self.message = message
 
 		self.time = datetime.datetime.strptime(entry['Timestamp'] + settings['input_timezone'], ENTRY_DATETIME_FORMAT + '%z')
 						# Create a timezone aware datetime object
 						# to represent the time properly.
-		# This comment is here to retain indentation.
+
+	@classmethod
+	def from_dict(cls, edict):
+		return cls(edict['Timestamp'], edict['Category'], edict['Name'], edict['Message'])
 
 	def get_dict(self):
 		'''Returns a dictionary containing the information the entry was originally given.
