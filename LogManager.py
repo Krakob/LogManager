@@ -7,7 +7,7 @@ Designed to be usable as a module.
 Developed by Krakob. Additional help from Zeddy.
 
 Spiral Knights forums thread:
-	Not yet existent.
+	http://forums.spiralknights.com/en/node/108270
 
 GitHub repository:
 	https://github.com/jakobs98/LogManager
