@@ -37,6 +37,7 @@ Functions:
 ################################
 import os
 import sys
+import re
 import csv
 import datetime
 
@@ -82,10 +83,32 @@ class Guild(LogBase):
 	'''A class intended to carry the data from one or more logs for a single guild.
 	'''
 	
-	def __init__(self, name):
-		self.logs = []
-		self.name = name
-		# TODO: read all logs in /logs with the guild name provided as the 2nd argument.
+	def __init__(self, logs):
+		'''Constructor. Takes a list of Log objects.
+		'''
+
+		self.logs = logs
+
+	@classmethod
+	def from_files(cls, files):
+		'''Alternative constructor. Takes a list of files
+		and puts them in the regular constuctor.
+		'''
+
+		logs = [Log.from_file(filename) for filename in files]
+
+	@classmethod
+	def from_dir(cls, directory, pattern):
+		'''Alternative constructor. Takes a directory
+		and puts the files in it which match the pattern
+		in the from_files constructor.
+		'''
+
+		files = []
+		for filename in os.listdir('./%s' % directory):
+			pass
+			# TODO: implement checking for pattern matches
+			#		throw list in from_files consturctor
 
 
 class Log(LogBase):
