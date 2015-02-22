@@ -105,10 +105,7 @@ class Log(LogBase):
 		and puts them in the regular constructor.
 		'''
 
-		entries = []
-		for entry in diclist:
-			entries.append(Entry.from_dict(entry))
-		return cls(entries)
+		return cls([Entry.from_dict(entry) from entry in diclist])
 
 	@classmethod
 	def from_file(cls, filename):
