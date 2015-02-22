@@ -100,12 +100,12 @@ class Log(LogBase):
 		self.source = None
 
 	@classmethod
-	def from_dictlist(cls, diclist):
+	def from_dictlist(cls, dictlist):
 		'''Alternative constructor. Converts a list of dicts to Entry objects
 		and puts them in the regular constructor.
 		'''
 
-		return cls([Entry.from_dict(entry) from entry in diclist])
+		return cls([Entry.from_dict(entry) from entry in dictlist])
 
 	@classmethod
 	def from_file(cls, filename):
