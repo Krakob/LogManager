@@ -107,7 +107,7 @@ class Log(LogBase):
 
 		entries = []
 		for entry in diclist:
-			entries.append(Entry(entry))
+			entries.append(Entry.from_dict(entry))
 		return cls(entries)
 
 	@classmethod
