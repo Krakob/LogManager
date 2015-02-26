@@ -63,7 +63,8 @@ class LogBase:
 	'''Base class containing methods needed by both Guild and Log.
 	The class is not meant to be instantiated.
 	'''
-	def get_list(self):
+
+	def get_dictlist(self):
 		'''Gets a list of dicts of the entries in the object.
 		'''
 
