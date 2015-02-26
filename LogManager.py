@@ -201,14 +201,15 @@ class Timeframe:
 	def __str__(self):
 		return str(self.start) + " to " + str(self.end)
 
+	def __contains__(self, time):
+		'''Checks whether time is within the period of time of the object.
+		Usage: if datetime_obj in timeframe
+		'''
+        return self.start <= time <= self.end
+
 	@classmethod
 	def from_delta(cls, start, enddelta):
 		return cls(start, start+enddelta)
-
-	def contains(self, time):
-		'''Checks whether time is within the period of time of the object.
-		'''
-		return self.start <= time <= self.end
 
 
 
