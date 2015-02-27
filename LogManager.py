@@ -129,7 +129,7 @@ class Log(LogBase):
 		and puts them in the regular constructor.
 		'''
 
-		return cls([Entry.from_dict(entry) from entry in dictlist])
+		return cls([Entry.from_dict(entry) for entry in dictlist])
 
 	@classmethod
 	def from_file(cls, filename):
