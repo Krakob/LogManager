@@ -171,8 +171,8 @@ class Entry:
 						# to represent the time properly.
 
 	@classmethod
-	def from_dict(cls, edict):
-		return cls(edict['Timestamp'], edict['Category'], edict['Name'], edict['Message'])
+	def from_dict(cls, entry_dict):
+		return cls(entry_dict['Timestamp'], entry_dict['Category'], entry_dict['Name'], entry_dict['Message'])
 
 	def get_dict(self):
 		'''Returns a dictionary containing the information the entry was originally given.
