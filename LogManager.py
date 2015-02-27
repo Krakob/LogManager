@@ -166,7 +166,7 @@ class Entry:
 		self.name = name
 		self.message = message
 
-		self.time = datetime.datetime.strptime(entry['Timestamp'] + settings['input_timezone'], ENTRY_DATETIME_FORMAT + '%z')
+		self.time = datetime.datetime.strptime(timestamp + settings['input_timezone'], ENTRY_DATETIME_FORMAT + '%z')
 						# Create a timezone aware datetime object
 						# to represent the time properly.
 
