@@ -206,6 +206,7 @@ class Timeframe:
 		'''Checks whether time is within the period of time of the object.
 		Usage: if datetime_obj in timeframe
 		'''
+		
 		return self.start <= time <= self.end
 
 	@classmethod
