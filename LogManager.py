@@ -177,7 +177,7 @@ class Entry:
 	def get_dict(self):
 		'''Returns a dictionary containing the information the entry was originally given.
 		'''
-
+		
 		return {
 			'Timestamp': self.timestamp,
 			'Category': self.category,
