@@ -100,6 +100,7 @@ class Guild(LogBase):
         '''
 
         logs = [Log.from_file(filename) for filename in files]
+        return cls(logs)
 
     @classmethod
     def from_dir(cls, directory, pattern):
