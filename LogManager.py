@@ -158,6 +158,9 @@ class Log(LogBase):
 			print("The first and last dates found in the file will be used instead.")
 			self.timeframe = Timeframe(self.entries[-1].time, self.entries[0].time)
 
+	def derive_logname_info(self, separator='_'):
+		return derive_logname_info(self.source, separator)
+
 
 class Entry:
 	'''An entry (line) in a log, to be contained in a Log object.
