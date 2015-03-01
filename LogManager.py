@@ -54,6 +54,9 @@ ENTRY_DATETIME_FORMAT = "%m/%d/%y %I:%M:%S %p"  # Format of datetime entry.
 LOGNAME_DATETIME_FORMAT = "%Y-%m-%d %H-%M-%S%z"  # (modified) format of datetime in log filenames. 
 												 # YYYY-MM-DD HH-MM-SS+zzzz
 
+LOGNAME_PATTERN = "(\w+)_(\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2})\.csv"  # The regex pattern of a log's filename.
+													 			 	  # Guild_Name_YYYY_MM_DD-HH_MM_SS.csv
+
 
 
 ################################
@@ -251,6 +254,16 @@ def read_settings(filename):
 	except FileNotFoundError:
 		print("%s could not be found." % filename)
 
+def derive_logname_info(filename, separator='_'):
+	'''Derives a dictionary the guild name and datetime string of a log filename.
+	Replaces the word separators in the guild name with the separator argument.
+	'''
+
+	match = re.match(LOGNAME_PATTERN, filename)
+	return (
+		match.group(1).replace('_', separator),
+		match.group(2)
+	)
 
 
 ################################
