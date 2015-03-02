@@ -273,7 +273,6 @@ def derive_logname_info(filename, separator='_'):
 ################################
 if __name__ == '__main__':
     settings = read_settings("settings.csv")
-    print(settings)
-
-    l = Log.from_file('testlog.csv')
-    print(l.get_list())
+    print("Settings:")
+    for setting, value in settings.items():
+        print('  -', setting.ljust(15), '=', value)
