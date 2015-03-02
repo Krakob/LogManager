@@ -119,20 +119,20 @@ class Log(LogBase):
     '''A single log file, to be contained in a Guild object.
     '''
     
-    def __init__(self, entries):
+    def __init__(self, entries, source=None):
         '''Constructor. Takes a list of Entry objects.
         '''
 
         self.entries = entries
-        self.source = None
+        self.source = source
 
     @classmethod
-    def from_dictlist(cls, dictlist):
+    def from_dictlist(cls, dictlist, source=None):
         '''Alternative constructor. Converts a list of dicts to Entry objects
         and puts them in the regular constructor.
         '''
 
-        return cls([Entry.from_dict(entry) for entry in dictlist])
+        return cls([Entry.from_dict(entry) for entry in dictlist], source)
 
     @classmethod
     def from_file(cls, filename):
@@ -141,8 +141,7 @@ class Log(LogBase):
         '''
 
         with open(filename) as f:
-            log = cls.from_dictlist(list(csv.DictReader(f)))
-            log.source = filename
+            log = cls.from_dictlist(list(csv.DictReader(f)), filename)
             log.derive_timeframe()
             return log
 
