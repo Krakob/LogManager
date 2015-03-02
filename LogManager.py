@@ -148,7 +148,7 @@ class Log(LogBase):
     def derive_timeframe(self):
         try:
             print("Trying to derive start and end time based on the filename, %s" % self.source)
-            t = datetime.datetime.strptime(' '.join(self.source.split('_')[-2:]) + settings['input_timezone'], LOGNAME_DATETIME_FORMAT)
+            t = datetime.datetime.strptime(self.derive_logname_info()[1]) + settings['input_timezone'], LOGNAME_DATETIME_FORMAT)
                             # Derive timestamp from filename
             self.timeframe = Timeframe.from_delta(t, datetime.timedelta(days=-10))
             print("Success!")
