@@ -99,8 +99,7 @@ class Guild(LogBase):
         and puts them in the regular constuctor.
         '''
 
-        logs = [Log.from_file(filename) for filename in files]
-        return cls(logs)
+        return cls([Log.from_file(filename) for filename in files])
 
     @classmethod
     def from_dir(cls, directory, pattern):
