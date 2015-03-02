@@ -1,0 +1,39 @@
+Backend:
+  File: ./LogManager.py/
+  Core functionality:
+    ☐ Proper backend funtionality
+      ☐ Guild class
+        ☐ Turn from_files() into a one-liner.
+        ☐ Finish from_dir()
+        ☐ Metadata
+          ☐ Find missing time periods
+        ☐ 
+
+      ☐ Log class
+        ☐ Implement combining feature
+
+      ☐ Entry class
+        ☐ 
+
+      ☐ Timeframe class
+        ☐ Apply derive_logname_info() in derive_timeframe()
+
+    ☐ Metadata generation
+      ☐ Find missing time periods
+
+    ☐ Log combiner
+
+  Extensive features:
+    ✔ Log to excel @done (15-03-02 09:55)
+    ☐ Log to HTML
+    ☐ Log to SQL
+    ☐ Treasury deposits compiler
+    ☐ Storage interaction compiler
+
+
+GUI:
+  File: ---
+
+
+Web version:
+  File: ---
