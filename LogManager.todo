@@ -3,7 +3,7 @@ Backend:
   Core functionality:
     ☐ Proper backend funtionality
       ☐ Guild class
-        ☐ Turn from_files() into a one-liner.
+        ✔ Turn from_files() into a one-liner. @done (15-03-02 15:06)
         ☐ Finish from_dir()
         ☐ Metadata
           ☐ Find missing time periods
