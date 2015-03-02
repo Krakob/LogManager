@@ -51,7 +51,7 @@ HEADER = ('Timestamp', 'Category', 'Name', 'Message')  # Correctly ordered heade
 ENTRY_DATETIME_FORMAT = "%m/%d/%y %I:%M:%S %p"  # Format of datetime entry.
                                                 # MM/DD/YY HH:MM:SS AM/PM.
 
-LOGNAME_DATETIME_FORMAT = "%Y-%m-%d %H-%M-%S%z"  # (modified) format of datetime in log filenames.
+LOGNAME_DATETIME_FORMAT = "%Y-%m-%d_%H-%M-%S%z"  # (modified) format of datetime in log filenames.
                                                  # YYYY-MM-DD HH-MM-SS+zzzz
 
 LOGNAME_PATTERN = "(\w+)_(\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2})\.csv"  # The regex pattern of a log's filename.
