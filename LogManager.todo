@@ -18,11 +18,6 @@ Backend:
       ☐ Timeframe class
         ✔ Apply derive_logname_info() in derive_timeframe() ./LogManager.py>derive_timeframe @done (15-03-02 15:19)
 
-    ☐ Metadata generation
-      ☐ Find missing time periods
-
-    ☐ Log combiner
-
   Extensive features:
     ✔ Log to excel @done (15-03-02 09:55)
     ☐ Log to HTML
