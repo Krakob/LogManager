@@ -237,6 +237,15 @@ def input_bool(prompt="Please enter an answer. "):
             print("Error! Input must be 'y' (yes) or 'n' (no).\n")
             a = input(prompt+"(y/n)\n").lower()
 
+def list_files(path='.'):
+    '''Returns a list of files in path.
+    '''
+
+    files = []
+    for item in os.listdir(path):
+        if os.path.isfile(item):
+            files.append(item)
+    return filess
 
 def read_settings(filename):
     '''Returns a dictionary containing data from filename, where the first column contains the key
