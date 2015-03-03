@@ -223,20 +223,6 @@ class Timeframe:
 ################################
 ## Functions
 ################################
-def input_bool(prompt="Please enter an answer. "):
-    '''Asks the user to input yes or no, where they return their respective boolean values.
-    '''
-    
-    a = input(prompt+"(y/n)\n").lower()
-    while True:
-        if a == 'y':
-            return True
-        elif a == 'n':
-            return False
-        else:
-            print("Error! Input must be 'y' (yes) or 'n' (no).\n")
-            a = input(prompt+"(y/n)\n").lower()
-
 def list_files(path='.'):
     '''Returns a list of files in path.
     '''
