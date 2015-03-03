@@ -102,17 +102,17 @@ class Guild(LogBase):
         return cls([Log.from_file(filename) for filename in files])
 
     @classmethod
-    def from_dir(cls, directory, pattern):
+    def from_dir(cls, directory, pattern=LOGNAME_PATTERN):
         '''Alternative constructor. Takes a directory
         and puts the files in it which match the pattern
         in the from_files constructor.
         '''
 
         files = []
-        for filename in os.listdir('./%s' % directory):
-            pass
-            # TODO: implement checking for pattern matches
-            #       throw list in from_files consturctor
+        for filename in os.list_files('./%s' % directory):
+            if re.match(pattern, filename):
+                files.append(filename)
+        return cls.from_files(files)
 
 
 class Log(LogBase):
