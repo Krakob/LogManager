@@ -82,6 +82,15 @@ class LogBase:
             writer.writeheader()
             writer.writerows(self.get_dictlist())
 
+    def dump_log(self, filename):
+        '''Dumps a csv log in filename, as originally formatted by Spiral Knigts.
+        '''
+
+        with open(filename, 'w', newline='') as f:
+            writer = csv.DictWriter(f, HEADER, quoting=csv.QUOTE_ALL)
+            writer.writeheader()
+            writer.writerows(self.get_dictlist())
+
 
 class Guild(LogBase):
     '''A class intended to carry the data from one or more logs for a single guild.
