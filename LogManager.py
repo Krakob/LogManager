@@ -55,7 +55,7 @@ LOGNAME_DATETIME_FORMAT = "%Y-%m-%d_%H-%M-%S%z"  # (modified) format of datetime
                                                  # YYYY-MM-DD HH-MM-SS+zzzz
 
 LOGNAME_PATTERN = "(\w+)_(\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2})\.csv"  # The regex pattern of a log's filename.
-                                                                      # Guild_Name_YYYY_MM_DD-HH_MM_SS.csv
+                                                                      # Guild_Name_YYYY-MM-DD_HH-MM-SS.csv
 
 
 
