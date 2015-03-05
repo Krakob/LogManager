@@ -80,7 +80,7 @@ class LogBase:
         with open(filename, 'w', newline='') as f:
             writer = csv.DictWriter(f, HEADER, delimiter='\t', doublequote=False, escapechar='')
             writer.writeheader()
-            writer.writerows(self.get_list())
+            writer.writerows(self.get_dictlist())
 
 
 class Guild(LogBase):
